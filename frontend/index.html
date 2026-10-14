@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Loan Prediction System</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ==================================================
+         HOME PAGE
+    ================================================== -->
+
+    <section
+        id="homePage"
+        class="page"
+    >
+
+        <div class="container home-container">
+
+            <div class="app-icon">
+                🏦
+            </div>
+
+            <h1>
+                Loan Prediction
+            </h1>
+
+            <p class="description">
+                Check your loan eligibility quickly
+                and easily using our machine learning
+                prediction system.
+            </p>
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📊
+                </div>
+
+                <p>
+                    Enter your financial details to get
+                    a loan eligibility prediction based
+                    on our trained machine learning model.
+                </p>
+
+            </div>
+
+            <button
+                id="startButton"
+                class="primary-button"
+            >
+                Check Loan Eligibility
+            </button>
+
+            <button
+                id="modelsButton"
+                class="secondary-button"
+            >
+                📊 View Model Performance
+            </button>
+
+            <button
+                id="historyButton"
+                class="secondary-button"
+            >
+                📜 Prediction History
+            </button>
+
+            <button
+                id="dashboardButton"
+                class="secondary-button"
+            >
+                📈 Dashboard
+            </button>
+
+            <p class="footer-text">
+                Loan Prediction System
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LOAN FORM PAGE
+    ================================================== -->
+
+    <section
+        id="formPage"
+        class="page hidden"
+    >
+
+        <div class="container form-container">
+
+            <button
+                id="backFromForm"
+                class="back-button"
+            >
+                ← Back
+            </button>
+
+            <h1>
+                Loan Application
+            </h1>
+
+            <p class="description">
+                Enter your financial information
+                to predict your loan eligibility.
+            </p>
+
+
+            <form id="loanForm">
+<!-- Applicant Name -->
+
+<div class="form-group">
+
+    <label for="applicant_name">
+        Applicant Name
+    </label>
+
+    <input
+        type="text"
+        id="applicant_name"
+        placeholder="Enter applicant name"
+        required
+    >
+
+</div>
+                <!-- Dependents -->
+
+                <div class="form-group">
+
+                    <label for="no_of_dependents">
+                        Number of Dependents
+                    </label>
+
+                    <input
+                        type="number"
+                        id="no_of_dependents"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Education -->
+
+                <div class="form-group">
+
+                    <label for="education">
+                        Education
+                    </label>
+
+                    <select
+                        id="education"
+                        required
+                    >
+
+                        <option value="">
+                            Select Education
+                        </option>
+
+                        <option value=" Graduate">
+                            Graduate
+                        </option>
+
+                        <option value=" Not Graduate">
+                            Not Graduate
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Self Employed -->
+
+                <div class="form-group">
+
+                    <label for="self_employed">
+                        Self Employed
+                    </label>
+
+                    <select
+                        id="self_employed"
+                        required
+                    >
+
+                        <option value="">
+                            Select Option
+                        </option>
+
+                        <option value=" Yes">
+                            Yes
+                        </option>
+
+                        <option value=" No">
+                            No
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Annual Income -->
+
+                <div class="form-group">
+
+                    <label for="income_annum">
+                        Annual Income
+                    </label>
+
+                    <input
+                        type="number"
+                        id="income_annum"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Loan Amount -->
+
+                <div class="form-group">
+
+                    <label for="loan_amount">
+                        Loan Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="loan_amount"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Loan Term -->
+
+                <div class="form-group">
+
+                    <label for="loan_term">
+                        Loan Term (Years)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="loan_term"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CIBIL Score -->
+
+                <div class="form-group">
+
+                    <label for="cibil_score">
+                        CIBIL Score
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cibil_score"
+                        min="300"
+                        max="900"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Residential Assets -->
+
+                <div class="form-group">
+
+                    <label for="residential_assets_value">
+                        Residential Assets Value
+                    </label>
+
+                    <input
+                        type="number"
+                        id="residential_assets_value"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Commercial Assets -->
+
+                <div class="form-group">
+
+                    <label for="commercial_assets_value">
+                        Commercial Assets Value
+                    </label>
+
+                    <input
+                        type="number"
+                        id="commercial_assets_value"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Luxury Assets -->
+
+                <div class="form-group">
+
+                    <label for="luxury_assets_value">
+                        Luxury Assets Value
+                    </label>
+
+                    <input
+                        type="number"
+                        id="luxury_assets_value"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Bank Assets -->
+
+                <div class="form-group">
+
+                    <label for="bank_asset_value">
+                        Bank Asset Value
+                    </label>
+
+                    <input
+                        type="number"
+                        id="bank_asset_value"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="predictButton"
+                    class="primary-button"
+                >
+                    Predict Loan Eligibility
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         RESULT PAGE
+    ================================================== -->
+
+    <section
+        id="resultPage"
+        class="page hidden"
+    >
+
+        <div class="container result-container">
+
+            <div
+                id="resultIcon"
+                class="result-icon"
+            >
+                ✓
+            </div>
+
+            <h1 id="resultTitle">
+                Loan Approved
+            </h1>
+
+            <p
+                id="resultMessage"
+                class="result-message"
+            >
+                Based on the trained machine learning
+                model, your loan application is predicted
+                to be approved.
+            </p>
+
+
+            <div class="result-card">
+
+                <div class="result-row">
+
+                    <span>
+                        Prediction
+                    </span>
+
+                    <strong id="predictionValue">
+                        Approved
+                    </strong>
+
+                </div>
+
+
+                <div class="result-row">
+
+                    <span>
+                        Model Used
+                    </span>
+
+                    <strong id="modelValue">
+                        Decision Tree
+                    </strong>
+
+                </div>
+
+
+                <div class="result-row">
+
+                    <span>
+                        Model Accuracy
+                    </span>
+
+                    <strong id="accuracyValue">
+                        98.36%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="newPredictionButton"
+                class="primary-button"
+            >
+                Make Another Prediction
+            </button>
+
+
+            <button
+                id="resultHistoryButton"
+                class="secondary-button"
+            >
+                📜 View History
+            </button>
+
+
+            <button
+                id="resultDashboardButton"
+                class="secondary-button"
+            >
+                📈 View Dashboard
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         MODEL PERFORMANCE PAGE
+    ================================================== -->
+
+    <section
+        id="modelsPage"
+        class="page hidden"
+    >
+
+        <div class="container">
+
+            <button
+                id="backFromModels"
+                class="back-button"
+            >
+                ← Back
+            </button>
+
+            <h1>
+                Model Performance
+            </h1>
+
+            <p class="description">
+                Accuracy of the machine learning
+                algorithms trained on the loan dataset.
+            </p>
+
+
+            <div
+                id="bestModelCard"
+                class="model-card"
+            >
+
+                <div class="model-header">
+
+                    <div class="model-icon">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <p class="model-label">
+                            Best Performing Model
+                        </p>
+
+                        <h2 id="bestModelName">
+                            Loading...
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accuracy-box">
+
+                    <span>
+                        Accuracy
+                    </span>
+
+                    <strong id="bestModelAccuracy">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="algorithmList">
+
+                <!-- Models will be loaded here -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         HISTORY PAGE
+    ================================================== -->
+
+    <section
+        id="historyPage"
+        class="page hidden"
+    >
+
+        <div class="container">
+
+            <button
+                id="backFromHistory"
+                class="back-button"
+            >
+                ← Back
+            </button>
+
+            <h1>
+                Prediction History
+            </h1>
+
+            <p class="description">
+                View your previous loan predictions.
+            </p>
+
+
+            <div class="history-summary">
+
+                <div class="history-summary-icon">
+                    📜
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Predictions
+                    </p>
+
+                    <h2 id="historyCount">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="historyList">
+
+                <!-- History will be loaded here -->
+
+            </div>
+
+
+            <button
+                id="clearHistoryButton"
+                class="danger-button"
+            >
+                Clear Prediction History
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         DASHBOARD PAGE
+    ================================================== -->
+
+    <section
+        id="dashboardPage"
+        class="page hidden"
+    >
+
+        <div class="container">
+
+            <button
+                id="backFromDashboard"
+                class="back-button"
+            >
+                ← Back
+            </button>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p class="description">
+                Overview of your loan prediction
+                activity.
+            </p>
+
+
+            <!-- Total -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Predictions
+                    </p>
+
+                    <h2 id="totalPredictions">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Approved / Rejected -->
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-stat approved-stat">
+
+                    <div class="dashboard-stat-icon">
+                        ✓
+                    </div>
+
+                    <p>
+                        Approved
+                    </p>
+
+                    <h2 id="approvedCount">
+                        0
+                    </h2>
+
+                </div>
+
+
+                <div class="dashboard-stat rejected-stat">
+
+                    <div class="dashboard-stat-icon">
+                        ✕
+                    </div>
+
+                    <p>
+                        Rejected
+                    </p>
+
+                    <h2 id="rejectedCount">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Approval Rate -->
+
+            <div class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    📈
+                </div>
+
+                <div>
+
+                    <p>
+                        Approval Rate
+                    </p>
+
+                    <h2 id="approvalRate">
+                        0%
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Best Model -->
+
+            <div class="model-card">
+
+                <div class="model-header">
+
+                    <div class="model-icon">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <p class="model-label">
+                            Best Performing Model
+                        </p>
+
+                        <h2 id="dashboardBestModel">
+                            Loading...
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accuracy-box">
+
+                    <span>
+                        Accuracy
+                    </span>
+
+                    <strong id="dashboardBestAccuracy">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Recent Predictions -->
+
+            <h2 style="margin-bottom: 15px;">
+                Recent Predictions
+            </h2>
+
+            <div id="dashboardRecent">
+
+                <!-- Recent predictions -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
