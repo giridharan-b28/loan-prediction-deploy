@@ -12,7 +12,16 @@ BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 app = Flask(__name__, static_folder=str(BASE_DIR / "frontend"), static_url_path="")
 CORS(app)
-MYSQL_CONFIG = {"host": os.getenv("MYSQL_HOST", "localhost"), "user": os.getenv("MYSQL_USER"), "password": os.getenv("MYSQL_PASSWORD"), "database": os.getenv("MYSQL_DATABASE"), "connection_timeout": int(os.getenv("MYSQL_CONNECT_TIMEOUT", "5"))}
+MYSQL_CONFIG = {
+    "host": os.getenv("MYSQL_HOST"),
+    "port": int(os.getenv("MYSQL_PORT", "4000")),
+    "user": os.getenv("MYSQL_USER"),
+    "password": os.getenv("MYSQL_PASSWORD"),
+    "database": os.getenv("MYSQL_DATABASE"),
+    "connection_timeout": int(os.getenv("MYSQL_CONNECT_TIMEOUT", "10")),
+    "ssl_verify_cert": True,
+    "ssl_verify_identity": True,
+}
 bundle = joblib.load(BASE_DIR / "models" / "all_models.pkl")
 preprocessor, label_encoder, models, accuracies = bundle["preprocessor"], bundle["label_encoder"], bundle["models"], bundle["accuracies"]
 REQUIRED = ("no_of_dependents", "education", "self_employed", "income_annum", "loan_amount", "loan_term", "cibil_score", "residential_assets_value", "commercial_assets_value", "luxury_assets_value", "bank_asset_value")
